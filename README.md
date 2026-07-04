@@ -2,7 +2,7 @@
 
 Este repositório contém uma solução demonstrativa em Python para a atividade de inteligência artificial, séries espaço-temporais e nowcasting de inundações urbanas, inspirada no modelo U-RNN.
 
-O dataset `urbanflood24.zip` é muito grande para ser descompactado integralmente em muitos computadores. Por isso, o notebook lê diretamente de dentro do ZIP, extrai apenas alguns eventos de `location1`, cria uma versão reduzida no padrão aproximado do UrbanFlood24 Lite e executa um experimento verificável em CPU.
+O dataset `urbanflood24.zip` é muito grande para ser descompactado integralmente em muitos computadores. Por isso, a entrega inclui em `data_demo/processed/` um subconjunto leve já processado, extraído de alguns eventos de `location1` no padrão aproximado do UrbanFlood24 Lite. O notebook também consegue regenerar esse subconjunto a partir do ZIP original, caso ele esteja disponível localmente.
 
 O experimento compara quatro abordagens:
 
@@ -19,14 +19,17 @@ A versão atual usa 8 eventos de treino e 4 eventos de teste de `location1`, tod
 ## Arquivos principais
 
 - `urban_flood_urnn_demo.ipynb`: notebook principal, com explicações, código, gráficos, métricas e evidências.
-- `make_notebook.py`: script usado para gerar o notebook de forma reproduzível.
-- `urbanflood24.zip`: arquivo esperado na raiz do projeto, mas ignorado pelo Git.
+- `data_demo/processed/`: subconjunto leve usado pelo notebook.
+- `outputs/`: gráficos e métricas já gerados.
+- `urbanflood24.zip`: arquivo original opcional para regenerar os dados processados; ele é grande e fica ignorado pelo Git.
 
 ## Como executar
 
-1. Coloque `urbanflood24.zip` na raiz deste diretório.
+1. Clone o repositório.
 2. Abra `urban_flood_urnn_demo.ipynb`.
 3. Execute as células em ordem.
+
+O ZIP original não é necessário para validar a entrega, pois os dados processados leves já estão em `data_demo/processed/`. Se quiser recriar esses arquivos a partir do dataset bruto, coloque `urbanflood24.zip` na raiz do projeto e remova ou substitua os arquivos processados.
 
 Dependências usadas:
 
@@ -34,7 +37,7 @@ Dependências usadas:
 pip install numpy matplotlib pandas scikit-learn torch nbformat nbclient
 ```
 
-O notebook cria automaticamente:
+O notebook usa e/ou cria:
 
 - `data_demo/processed/`: subconjunto reduzido dos dados;
 - `outputs/`: gráficos e métricas gerados pelo experimento.
@@ -54,7 +57,7 @@ Esta entrega não tenta reproduzir o treinamento completo do artigo, que usa dad
 A solução entregue contempla:
 
 - estudo e adaptação da proposta do U-RNN;
-- uso direto do material suplementar `urbanflood24.zip`;
+- uso de um subconjunto processado do material suplementar `urbanflood24.zip`;
 - execução em notebook Python;
 - inferência e experimento simplificado de nowcasting;
 - geração de gráficos, mapas, métricas e evidências em `outputs/`;
